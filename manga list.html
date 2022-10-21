@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Manga list</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="description" content="Manga list">
+  <meta name="keywords" content="Manga list">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/resource/public/plugins/fontawesome-free/css/all.min.css" />
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/app/manga/themes/dark/assets/css/main.css" />
+
+  <link href="/favicon.ico" rel="icon" type="image/vnd.microsoft.icon">
+  <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="/favicon.ico" rel="icon" type="image/x-icon">
+
+  <!-- jQuery -->
+  <script src="/resource/public/plugins/jquery/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    var siteURL = "https://manhwa18.net";
+    var ttazPage = "list";
+    var userName = "";
+    var userId = "";
+  </script>
+</head>
+<body class="hold-transition layout-top-nav dark-mode">
+  <div class="wrapper">
+   <!-- /.navbar -->
+<nav id="sticky-navbar" class="main-header navbar navbar-expand navbar-dark navbar-primary" style="">
+	<div class="container">
+		<a href="/" class="navbar-brand">
+			<img src="/uploads/logos/logo-mini.png" alt="Logo" class="brand-image elevation-3" style="opacity: .8">
+			<span class="brand-text font-weight-light d-none d-lg-inline text-light">Manhwa18</span>
+		</a>
+		<div class="navbar-collapse collapse" style="">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a data-toggle="dropdown" href="#" aria-expanded="true" class="nav-link dropdown-toggle"><i class="fas fa-book-open"></i><span class="d-none d-lg-inline ml-1">Genre(s)</span></a>
+					<div class="dropdown-menu manga-mega-menu genres-menu w-100 justify-content-center">
+						<div class="row no-gutters">
+							<div class="col-4 col-md-2"><a class="dropdown-item genres-item" href="/manga-list-genre-adult.html" target="_self">Adult</a></div><div class="col-4 col-md-2"><a class="dropdown-item genres-item" href="/manga-list-genre-manhwa.html" target="_self">Manhwa</a></div><div class="col-4 col-md-2"><a class="dropdown-item genres-item" href="/manga-list-genre-mature.html" target="_self">Mature</a></div><div class="col-4 col-md-2"><a class="dropdown-item genres-item" href="/manga-list-genre-romance.html" target="_self">Romance</a></div><div class="col-4 col-md-2"><a class="dropdown-item genres-item" href="/manga-list-genre-harem.html" target="_self">Harem</a></div><div class="col-4 col-md-2"><a class="dropdown-item genres-item" href="/manga-list-genre-raw.html" target="_self">Raw</a></div><div class="col-4 col-md-2"><a class="dropdown-item genres-item" href="/manga-list-genre-bl.html" target="_self">BL</a></div><div class="col-4 col-md-2"><a class="dropdown-item genres-item" href="/manga-list-genre-comedy.html" target="_self">Comedy</a></div>						</div>
+					</div>
+				</li>
+				<li class="nav-item ml-1">
+					<a href="/manga-list.html?bookmark=1" class="nav-link"><i class="far fa-bookmark"></i> <span class="d-none d-lg-inline">Bookmark</span></a>
+				</li>
+				<li class="nav-item ml-1">
+					<a href="/manga-list.html?history=1" class="nav-link"><i class="fa fa-history" aria-hidden="true"></i> <span class="d-none d-lg-inline">History</span></a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Right navbar links -->
+		<ul class="navbar-nav ml-auto flex-row right-nav-wrapper">
+			<!-- SEARCH FORM -->
+			<form class="form-inline ml-3 d-none d-md-inline align-self-center position-relative" action="/manga-list.html">
+				<div class="input-group input-group-sm">
+					<input class="form-control form-control-navbar search-web inputSearch" type="search" name="name" placeholder="Search" aria-label="Search" autocomplete="off">
+					<div class="input-group-append">
+						<button class="btn btn-navbar" type="submit">
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+				</div>
+				<div class="ssSearch d-none card" tabindex="-1">
+					<div class="card-header pl-3 py-2 header-search">
+						<h5 class="card-title">Result</h5>
+					</div>
+					<div class="card-body search-result px-1 py-2">
+
+					</div>
+				</div>
+			</form>
+			<!-- Navbar Search -->
+			<li class="nav-item">
+				<a class="nav-link search-mobile" data-widget="navbar-search" href="#" role="button">
+					<i class="fas fa-search"></i>
+				</a>
+				<div class="navbar-search-block">
+					<form class="form-inline position-relative" action="/manga-list.html">
+						<div class="input-group input-group-sm">
+							<input class="form-control form-control-navbar inputSearch" type="search" placeholder="Search" name="name" aria-label="Search" autocomplete="off">
+							<div class="input-group-append">
+								<button class="btn btn-navbar" type="submit">
+									<i class="fas fa-search"></i>
+								</button>
+								<button class="btn btn-navbar" type="button" data-widget="navbar-search">
+									<i class="fas fa-times"></i>
+								</button>
+							</div>
+						</div>
+						<div class="ssSearch d-none card" tabindex="-1">
+							<div class="card-header pl-3 py-2 header-search">
+								<h5 class="card-title">Result</h5>
+							</div>
+							<div class="card-body search-result px-1 py-2">
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</li>
+						<li class="nav-item">
+				<a class="nav-link" href="/account/login"><i class="fas fa-sign-in-alt"></i> <span class="d-none d-sm-inline">Sign in</span></a>
+			</li>
+			<li class="nav-item d-none d-sm-inline">
+				<a class="nav-link" href="/account/register"><i class="fas fa-user-circle"></i> Register</a>
+			</li>
+
+					</ul>
+	</div>
+</nav>   <div class="content-wrapper">
+    <div class="container mt-5rem">
+      <div class="row">
+        <div class="col-md-12">
+          <nav aria-label="breadcrumb">
+	<ol class="breadcrumb bg-primary py-1 px-2">
+		<li class="breadcrumb-item"><a class="text-light" href="https://manhwa18.net/">Home</a></li>
+		<li class="breadcrumb-item active" aria-current="page">List manga</li>
+	</ol>
+</nav>        </div>
+        <div class="col-md-8">
+          <div class="btn-group asc pr-2 py-2">
+	<a href="manga-list.html?listType=pagination&page=1&artist=&author=&group=&m_status=&name=&genre=&ungenre=&sort=views&sort_type=ASC" class="btn btn-sm btn-info "><i class="fas fa-sort-amount-up-alt"></i> ASC</a>
+	<a href="manga-list.html?listType=pagination&page=1&artist=&author=&group=&m_status=&name=&genre=&ungenre=&sort=views&sort_type=DESC" class="btn btn-sm btn-info active"><i class="fas fa-sort-amount-down"></i> DESC</a>
+</div>
+<div class="btn-group soft-by py-2">
+	<button class="btn btn-sm btn-info" disabled>Sorted by</button>
+	<a href="manga-list.html?listType=pagination&page=1&artist=&author=&group=&m_status=&name=&genre=&ungenre=&sort=name&sort_type=DESC" class="btn btn-sm btn-info "><i class="fas fa-sort-alpha-down"></i> A-Z</a>
+	<a href="manga-list.html?listType=pagination&page=1&artist=&author=&group=&m_status=&name=&genre=&ungenre=&sort=views&sort_type=DESC" class="btn btn-sm btn-info active"><i class="fas fa-eye"></i> Most view</a>
+	<a href="manga-list.html?listType=pagination&page=1&artist=&author=&group=&m_status=&name=&genre=&ungenre=&sort=last_update&sort_type=DESC" class="btn btn-sm btn-info "><i class="fas fa-calendar-times"></i> Last updated</a>
+</div>
+
+<div class="btn-group float-md-right py-2">
+	<div class="button-group">
+		<a href="/search" type="button" class="btn btn-sm btn-primary float-right"><i class="fas fa-filter"></i> Search Adcenced</a>
+	</div>
+</div>
+</div>
+<div class="col-md-8">
+	<div class="card">
+		<div class="card-header d-flex p-0">
+			<h3 class="card-title p-3">List manga</h3>
+		</div>
+		<div class="card-body">
+			<div class="row">
+
+					<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="494" data-is-loaded="0">
+			<a href="manga-secret-class.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/secret-class.jpg" style="background-image: url('/app/manga/uploads/covers/secret-class.jpg')"  onmouseleave="out_show()" onmouseenter="show(494)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-secret-class-chapter-142.html">142</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="2 weeks ago ">2 weeks ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-secret-class.html" title="Secret class">Secret class</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="436" data-is-loaded="0">
+			<a href="manga-stepmother-friends-magicmanscan.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/stepmother-friends-magicmanscan.jpg" style="background-image: url('/app/manga/uploads/covers/stepmother-friends-magicmanscan.jpg')"  onmouseleave="out_show()" onmouseenter="show(436)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-stepmother-friends-magicmanscan-chapter-133.html">133</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="5 days ago ">5 days ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-stepmother-friends-magicmanscan.html" title="Stepmother friends (magicmanscan)">Stepmother friends (magicmanscan)</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="890" data-is-loaded="0">
+			<a href="manga-keep-it-a-secret-from-your-mother.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/keep-it-a-secret-from-your-mother.jpg" style="background-image: url('/app/manga/uploads/covers/keep-it-a-secret-from-your-mother.jpg')"  onmouseleave="out_show()" onmouseenter="show(890)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-keep-it-a-secret-from-your-mother-chapter-61.html">61</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="7 days ago ">7 days ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-keep-it-a-secret-from-your-mother.html" title="Keep it a secret from your mother">Keep it a secret from your mother</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="898" data-is-loaded="0">
+			<a href="manga-is-there-an-empty-room-manhwa.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/9acc69eaca57b0368f67f82305cd9228.jpg" style="background-image: url('/app/manga/uploads/covers/9acc69eaca57b0368f67f82305cd9228.jpg')"  onmouseleave="out_show()" onmouseenter="show(898)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-is-there-an-empty-room-manhwa-chapter-64.5.html">64.5</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="6 years ago ">6 years ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-is-there-an-empty-room-manhwa.html" title="Is there an Empty Room manhwa">Is there an Empty Room manhwa</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="458" data-is-loaded="0">
+			<a href="manga-silent-war.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/silent-war.jpg" style="background-image: url('/app/manga/uploads/covers/silent-war.jpg')"  onmouseleave="out_show()" onmouseenter="show(458)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-silent-war-chapter-160.5.html">160.5</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="7 years ago ">7 years ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-silent-war.html" title="Silent War">Silent War</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="886" data-is-loaded="0">
+			<a href="manga-a-wonderful-new-world.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/a-wonderful-new-world.jpg" style="background-image: url('/app/manga/uploads/covers/a-wonderful-new-world.jpg')"  onmouseleave="out_show()" onmouseenter="show(886)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-a-wonderful-new-world-chapter-156.html">156</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="1 week ago ">1 week ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-a-wonderful-new-world.html" title="A wonderful new world">A wonderful new world</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="873" data-is-loaded="0">
+			<a href="manga-boarding-diary-engsub.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/boarding-diary-engsub.jpg" style="background-image: url('/app/manga/uploads/covers/boarding-diary-engsub.jpg')"  onmouseleave="out_show()" onmouseenter="show(873)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-boarding-diary-engsub-chapter-108.html">108</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="11 minutes ago ">11 minutes ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-boarding-diary-engsub.html" title="Boarding Diary Engsub">Boarding Diary Engsub</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="571" data-is-loaded="0">
+			<a href="manga-new-town-engsub.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/new-town-engsub.jpg" style="background-image: url('/app/manga/uploads/covers/new-town-engsub.jpg')"  onmouseleave="out_show()" onmouseenter="show(571)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-new-town-engsub-chapter-54.html">54</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="1 week ago ">1 week ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-new-town-engsub.html" title="New town engsub">New town engsub</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="870" data-is-loaded="0">
+			<a href="manga-learning-the-hard-way.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/learning-the-hard-way.jpg" style="background-image: url('/app/manga/uploads/covers/learning-the-hard-way.jpg')"  onmouseleave="out_show()" onmouseenter="show(870)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-learning-the-hard-way-chapter-87.html">87</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="3 days ago ">3 days ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-learning-the-hard-way.html" title="Learning the Hard Way">Learning the Hard Way</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="479" data-is-loaded="0">
+			<a href="manga-sex-exercise.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/sex-exercise.jpg" style="background-image: url('/app/manga/uploads/covers/sex-exercise.jpg')"  onmouseleave="out_show()" onmouseenter="show(479)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-sex-exercise-chapter-82.html">82</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="6 years ago ">6 years ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-sex-exercise.html" title="Sex exercise">Sex exercise</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="526" data-is-loaded="0">
+			<a href="manga-private-tutoring-in-these-trying-times.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/private-tutoring-in-these-trying-times.jpg" style="background-image: url('/app/manga/uploads/covers/private-tutoring-in-these-trying-times.jpg')"  onmouseleave="out_show()" onmouseenter="show(526)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-private-tutoring-in-these-trying-times-chapter-65.html">65</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="14 hours ago ">14 hours ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-private-tutoring-in-these-trying-times.html" title="Private Tutoring in These Trying Times">Private Tutoring in These Trying Times</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="556" data-is-loaded="0">
+			<a href="manga-ones-in-laws-virgins-breakerrvp.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/ones-in-laws-virgins-breakerrvp.jpg" style="background-image: url('/app/manga/uploads/covers/ones-in-laws-virgins-breakerrvp.jpg')"  onmouseleave="out_show()" onmouseenter="show(556)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-ones-in-laws-virgins-breakerrvp-chapter-111.5.html">111.5</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="2 years ago ">2 years ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-ones-in-laws-virgins-breakerrvp.html" title="Ones in-laws virgins (BreakerRvP)">Ones in-laws virgins (BreakerRvP)</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="335" data-is-loaded="0">
+			<a href="manga-touch-on.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/touch-on.jpg" style="background-image: url('/app/manga/uploads/covers/touch-on.jpg')"  onmouseleave="out_show()" onmouseenter="show(335)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-touch-on-chapter-109.3.html">109.3</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="6 years ago ">6 years ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-touch-on.html" title="Touch on">Touch on</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="460" data-is-loaded="0">
+			<a href="manga-should-i-study-at-noryangjin-engsub.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/should-i-study-at-noryangjin-engsub.jpg" style="background-image: url('/app/manga/uploads/covers/should-i-study-at-noryangjin-engsub.jpg')"  onmouseleave="out_show()" onmouseenter="show(460)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-should-i-study-at-noryangjin-engsub-chapter-101.html">101</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="4 years ago ">4 years ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-should-i-study-at-noryangjin-engsub.html" title="Should I study at Noryangjin Engsub">Should I study at Noryangjin Engsub</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="367" data-is-loaded="0">
+			<a href="manga-the-owner-of-a-building-engsub.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/the-owner-of-a-building-engsub.jpg" style="background-image: url('/app/manga/uploads/covers/the-owner-of-a-building-engsub.jpg')"  onmouseleave="out_show()" onmouseenter="show(367)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-the-owner-of-a-building-engsub-chapter-61.html">61</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="4 days ago ">4 days ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-the-owner-of-a-building-engsub.html" title="The Owner Of A Building Engsub">The Owner Of A Building Engsub</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="906" data-is-loaded="0">
+			<a href="manga-between-us-engsub.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/between-us-engsub.jpg" style="background-image: url('/app/manga/uploads/covers/between-us-engsub.jpg')"  onmouseleave="out_show()" onmouseenter="show(906)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-between-us-engsub-chapter-90.4.html">90.4</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="3 years ago ">3 years ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-between-us-engsub.html" title="Between Us Engsub">Between Us Engsub</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="520" data-is-loaded="0">
+			<a href="manga-queen-bee-acera.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/queen-bee-acera.jpg" style="background-image: url('/app/manga/uploads/covers/queen-bee-acera.jpg')"  onmouseleave="out_show()" onmouseenter="show(520)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-queen-bee-acera-chapter-237.html">237</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="3 days ago ">3 days ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-queen-bee-acera.html" title="Queen Bee (Acera)">Queen Bee (Acera)</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="948" data-is-loaded="0">
+			<a href="manga-night-king-seong-gwi-nam.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/night-king-seong-gwi-nam.jpg" style="background-image: url('/app/manga/uploads/covers/night-king-seong-gwi-nam.jpg')"  onmouseleave="out_show()" onmouseenter="show(948)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-night-king-seong-gwi-nam-chapter-45.html">45</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="2 weeks ago ">2 weeks ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-night-king-seong-gwi-nam.html" title="Night King Seong Gwi Nam">Night King Seong Gwi Nam</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="941" data-is-loaded="0">
+			<a href="manga-the-little-master.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/the-little-master.jpg" style="background-image: url('/app/manga/uploads/covers/the-little-master.jpg')"  onmouseleave="out_show()" onmouseenter="show(941)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-the-little-master-chapter-45.html">45</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="1 year ago ">1 year ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-the-little-master.html" title="The Little Master">The Little Master</a>
+			</div>
+		</div>
+			<div class="thumb-item-flow col-6 col-md-3">
+		<div class="thumb-wrapper" data-id="910" data-is-loaded="0">
+			<a href="manga-dorm-room-sisters.html">
+				<div class="a6-ratio">
+					<div class="content img-in-ratio lazyloaded" data-bg="/app/manga/uploads/covers/dorm-room-sisters.jpg" style="background-image: url('/app/manga/uploads/covers/dorm-room-sisters.jpg')"  onmouseleave="out_show()" onmouseenter="show(910)"></div>
+				</div>
+			</a>
+			<div class="thumb-detail">
+				<div class="thumb_attr chapter-title text-truncate">
+					Last chapter: <a href="read-dorm-room-sisters-chapter-67.html">67</a>					</div>
+				</div>
+				<div class="manga-badge">
+					<span class="badge badge-info">
+						<time class="timeago" title="11 minutes ago ">11 minutes ago </time>
+					</span>
+				</div>
+			</div>
+			<div class="thumb_attr series-title">
+				<a href="manga-dorm-room-sisters.html" title="Dorm Room Sisters">Dorm Room Sisters</a>
+			</div>
+		</div>
+					</div>
+						<div class="pagination-wrap float-right">
+				<ul class="pagination pagination-v4">
+					<li><a class="disabled">&laquo;</a></li><li><a class="active">1</a></li><li><a href="manga-list.html?listType=pagination&page=2&artist=&author=&group=&m_status=&name=&genre=&ungenre=&sort=views&sort_type=DESC">2</a></li><li><a href="manga-list.html?listType=pagination&page=3&artist=&author=&group=&m_status=&name=&genre=&ungenre=&sort=views&sort_type=DESC">3</a></li><li><a class="disabled">...</a></li><li><li><a href="manga-list.html?listType=pagination&page=55&artist=&author=&group=&m_status=&name=&genre=&ungenre=&sort=views&sort_type=DESC">55</a></li><li><a href="manga-list.html?listType=pagination&page=2&artist=&author=&group=&m_status=&name=&genre=&ungenre=&sort=views&sort_type=DESC">&raquo;</a></li>				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="pop_manga"></div>
+	<script>
+		function delete_manga(manga) {
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("GET", "/app/manga/controllers/cont.deleteManga.php?id=" + manga, true);
+			xhttp.send();
+			var el = document.getElementById(manga);
+			el.parentNode.removeChild(el);
+		}
+	</script>
+</div><div class="col-md-4"><div class="card card-dark">
+  <div class="card-header"><h3 class="card-title">Genres</h3></div>
+  <div class="card-body bg-dark">
+    <ul class="filter-type unstyled clear row">
+             <li class="filter-type_item col-4 text-nowrap"><a href="manga-list-genre-adult.html">Adult</a></li>
+            <li class="filter-type_item col-4 text-nowrap"><a href="manga-list-genre-manhwa.html">Manhwa</a></li>
+            <li class="filter-type_item col-4 text-nowrap"><a href="manga-list-genre-mature.html">Mature</a></li>
+            <li class="filter-type_item col-4 text-nowrap"><a href="manga-list-genre-romance.html">Romance</a></li>
+            <li class="filter-type_item col-4 text-nowrap"><a href="manga-list-genre-harem.html">Harem</a></li>
+            <li class="filter-type_item col-4 text-nowrap"><a href="manga-list-genre-raw.html">Raw</a></li>
+            <li class="filter-type_item col-4 text-nowrap"><a href="manga-list-genre-bl.html">BL</a></li>
+            <li class="filter-type_item col-4 text-nowrap"><a href="manga-list-genre-comedy.html">Comedy</a></li>
+        </ul>
+ </div>
+</div>
+</div>         <div class="clearfix visible-xs visible-lg visible-md"></div>
+       </div>
+     </div>
+     <footer class="main-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 py-3">
+				<div class="footer float-left">
+					<a href="/" class="d-inline py-1 my-1 justify-content-center float-none">
+						<img src="/uploads/logos/logo.png" alt="placeholder+image" width="200" height="80">
+					</a>
+					<div class="mx-auto my-2">The website is content is entirely derived from the internet or contributed by members. If you have a copyright complaint, please contact us and we will remove it as soon as possible. Thanks.</div>
+					<ul class="list-unstyled mt-2 mb-0 d-flex">
+						<li>
+							<a href="javascript:void(0)" class="d-inline-block pr-3 py-2"><i class="fas fa-registered"></i> <span class="d-none d-sm-inline-block">Term</span></a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" class="d-inline-block pr-3 py-2"><i class="far fa-copyright"></i> <span class="d-none d-sm-inline-block">Lecense</span></a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" class="d-inline-block pr-3 py-2"><i class="fas fa-user-lock"></i> <span class="d-none d-sm-inline-block">Privacy</span></a>
+						</li>
+						<li>
+							<a href="javascript:void(0)" class="d-inline-block pr-3 py-2"><i class="fas fa-envelope"></i> <span class="d-none d-sm-inline-block">Advertising contact</span></a>
+						</li>
+					</ul>
+				</div>
+				<div class="vl d-none d-md-inline-block"></div>
+			</div>
+			<div class="col-md-6 py-3">
+				<div class="tag-footer">
+					<a href="/manga-list-genre-adult.html" class="btn btn-xs btn-secondary m-1">Adult</a><a href="/manga-list-genre-manhwa.html" class="btn btn-xs btn-secondary m-1">Manhwa</a><a href="/manga-list-genre-mature.html" class="btn btn-xs btn-secondary m-1">Mature</a><a href="/manga-list-genre-romance.html" class="btn btn-xs btn-secondary m-1">Romance</a><a href="/manga-list-genre-harem.html" class="btn btn-xs btn-secondary m-1">Harem</a><a href="/manga-list-genre-raw.html" class="btn btn-xs btn-secondary m-1">Raw</a><a href="/manga-list-genre-bl.html" class="btn btn-xs btn-secondary m-1">BL</a><a href="/manga-list-genre-comedy.html" class="btn btn-xs btn-secondary m-1">Comedy</a>				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<div class="btn-back-to-top">
+	<i class="fa fa-angle-double-up"></i>
+</div>
+
+<style>
+	.vl {
+		border-left: 2px dashed #d6d6d6;
+		height: 100%;
+		position: absolute; 
+		right: 0;
+		top: 0;
+	}
+</style>   </div>
+ </div>
+</div>
+<!-- Theme js -->
+<script src="/app/manga/themes/dark/assets/js/main.js"></script>
+</body>
+</html>
+
